@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>致小于</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url("background.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: "鸿雷行书简体", cursive;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+        .top-text {
+            margin-top: 50px;
+            font-size: 28px;
+        }
+        .bottom-text {
+            margin-bottom: 50px;
+            font-size: 24px;
+        }
+        .snowflake {
+            position: absolute;
+            color: white;
+            user-select: none;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-text">致小于</div>
+    <div class="bottom-text">对了，我也很想你。</div>
+
+    <script>
+        const messages = [
+            "久别重逢，是个好词。", "最近见面的频率好像很高。", "我的目光，属于你很久了。",
+            "我也不只是你的主治医生。", "有事常联系，没事也可以。", "你是我最见效的药。",
+            "每一个周末都供你支配。", "你和甜品的作用相差不大。", "送你的话，我总是顺路。",
+            "习惯了你的叽叽喳喳。", "和你见面，是最好的放松。", "好像正在熟悉你的口味。",
+            "第一次体会到依赖的感觉。", "你是噩梦唯一的解法。", "你的出现从来不会是打扰。",
+            "拥抱不是生病才有的特权。", "照顾你这件事就交给我了。", "你出现就是我的休息时间。",
+            "再忙，也有时间和你见面。", "想见我不用挂号，直说就行。", "因为你，我期待每一个明天。",
+            "冰雪因为你的笑而融化。", "很多事和你一起才有趣。", "能让我心律失常的只有你。",
+            "你总是特例", "拿你没办法，是在夸你。", "今天我替小雪豹陪你。",
+            "仪式感和惊喜都只属于你。", "保管好，我的心在你那里。", "你永远都在我的计划中。",
+            "稳把每一刻都变成永恒。", "这份礼物已经准备很久了。", "陪你一起感受时间的变化。",
+            "视线不自觉地被你吸引。", "你的愿望，我听到了。", "想见你，不需要理由。",
+            "你已经成为了我的习惯。", "把自己抵押给你了。", "希望你的声音能伴我入梦。",
+            "你的微笑总能牵动我的心。", "你是我最有效的止痛药。", "想起你，心情会变好。",
+            "不想放开你的手。", "想在每个清晨对你说早安。", "车里放的是你最爱的歌单。",
+            "最喜欢的，是你挑的领带。", "走向你的步伐永远坚定。", "失神和喜悦，都因为你。",
+            "你的气息，萦绕不散。", "融雪会记住你手心的温度。"
+        ];
+
+        function createSnowflake() {
+            const snowflake = document.createElement("div");
+            snowflake.classList.add("snowflake");
+            snowflake.textContent = "❄";
+            snowflake.style.left = Math.random() * window.innerWidth + "px";
+            snowflake.style.top = "-30px";
+            snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
+            snowflake.addEventListener("click", () => {
+                alert(messages[Math.floor(Math.random() * messages.length)]);
+            });
+            document.body.appendChild(snowflake);
+
+            let fallInterval = setInterval(() => {
+                snowflake.style.top = parseFloat(snowflake.style.top) + 1 + "px";
+                if (parseFloat(snowflake.style.top) > window.innerHeight) {
+                    snowflake.remove();
+                    clearInterval(fallInterval);
+                }
+            }, 20);
+        }
+
+        setInterval(createSnowflake, 400);
+    </script>
+</body>
+</html>
